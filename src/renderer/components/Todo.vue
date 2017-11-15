@@ -13,11 +13,13 @@ import fs from "fs";
 import path from "path";
 import TodoAdd from "./TodoAdd";
 import TodoItem from "./TodoItem";
-import { ipcRenderer } from "electron";
+import { ipcRenderer, remote } from "electron";
 
 function save() {
   let items = JSON.stringify(this.items);
-  fs.writeFile(path.join(__static, "/list.txt"), items, err => {
+  let filePath = path.join(remote.app.getPath('userData'), 'list.txt');
+
+  fs.writeFile(filePath, items, err => {
     if (err) {
       console.error(err);
     }

@@ -69,9 +69,11 @@ app.on('ready', () => {
   createWindow();
 
   if (mainWindow) {
-    fs.readFile(path.join(__static, 'list.txt'), (err, data) => {
+    let filePath = path.join(app.getPath('userData'), 'list.txt');
+
+    fs.readFile(filePath, (err, data) => {
       if (err) {
-        fs.writeFile(path.join(__static, 'list.txt'), '', err => {
+        fs.writeFile(filePath, '', err => {
           if (err) {
             console.error(err);
           }
