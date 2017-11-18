@@ -1,19 +1,15 @@
 <template>
   <ul>
-    <li v-for="item in items" :key="item.id" :class="{'list-item':defaultClass}" @click.stop="select(item.id)">{{ item.title }}</li>
+    <li v-for="item in items" :key="item.id" :class="{'list-item':defaultClass, 'selected':item.selected}" @click.stop="select(item.id)">{{ item.title }}</li>
   </ul>
 </template>
 
 <script>
-import ListItem from './ListItem';
-
   export default {
     name: "post-list",
     props: ['items'],
-    components: {ListItem},
     data(){
       return {
-        selected: 0,
         defaultClass: 'list-item'
       }
     },
@@ -21,7 +17,6 @@ import ListItem from './ListItem';
     },
     methods: {
       select(id) {
-        this.selected = id;
         this.$emit("select", id);
       }
     }
@@ -44,7 +39,7 @@ import ListItem from './ListItem';
     transition: background-color 300ms;
   }
 
-  .list-selected{
+  .selected{
     background-color: #5e677c;
   }
 </style>

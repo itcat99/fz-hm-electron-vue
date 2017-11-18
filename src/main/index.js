@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu } from 'electron'
+import { app, BrowserWindow, Menu, dialog } from 'electron'
 import fs from 'fs'
 import path from 'path'
 
@@ -29,11 +29,8 @@ function createWindow() {
 
   // create menu
   const template = [{
-    label: 'todoList',
-    submenu: [{
-      label: 'quit',
-      role: 'quit'
-    }]
+    label: 'Window',
+    role: 'windowMenu'
   }, {
     label: 'Dev',
     submenu: [{
@@ -42,17 +39,13 @@ function createWindow() {
       role: 'toggledevtools'
     }]
   }, {
-    label: 'Window',
-    role: 'windowMenu'
-  }, {
-    label: 'Edit',
-    role: 'editMenu'
-  }, {
     label: 'About',
     submenu: [{
       label: 'About me...',
       click() {
-        console.log('hahahha')
+        dialog.showMessageBox({
+          message: 'power by Electron/Vue.'
+        })
       }
     }]
   }]
@@ -69,7 +62,7 @@ app.on('ready', () => {
   createWindow();
 
   if (mainWindow) {
-    let filePath = path.join(app.getPath('userData'), 'list.txt');
+    let filePath = path.join(app.getPath('userData'), 'posts.txt');
 
     fs.readFile(filePath, (err, data) => {
       if (err) {
