@@ -1,0 +1,11 @@
+{
+  "name": "electron-tutorial",
+  "main": "index.js",
+  "version": "0.0.1",
+  "scripts": {
+    "server": "http-server"
+  },
+  "dependencies": {
+    "vue": "^2.5.5"
+  }
+}
