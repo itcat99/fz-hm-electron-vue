@@ -9,11 +9,12 @@
 </template>
 
 <script>
+import { ipcRenderer, remote } from "electron";
 import fs from "fs";
 import path from "path";
+
 import TodoAdd from "./TodoAdd";
 import TodoItem from "./TodoItem";
-import { ipcRenderer, remote } from "electron";
 
 function save() {
   let items = JSON.stringify(this.items);

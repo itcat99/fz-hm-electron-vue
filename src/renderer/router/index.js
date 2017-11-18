@@ -5,16 +5,16 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'todo',
-      component: require('@/components/Todo').default
-    },
     // {
     //   path: '/',
-    //   name: 'landing-page',
-    //   component: require('@/components/LandingPage').default
+    //   name: 'todo',
+    //   component: require('@/components/Todo').default
     // },
+    {
+      path: '/',
+      name: 'editor',
+      component: require('@/components/Editor').default
+    },
     {
       path: '*',
       redirect: '/'
